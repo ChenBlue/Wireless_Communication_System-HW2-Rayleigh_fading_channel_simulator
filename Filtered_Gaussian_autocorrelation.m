@@ -31,8 +31,6 @@ phi2 = zeros(1, tau(2)+1);
 phi3 = zeros(1, tau(3)+1);
 
 gI_shift = zeros(1,sample_num);
-x = size(gI(1,1:end-3));
-y = size(gI_shift(1, 4:end));
 
 for i=0:tau(1)
     gI_shift = zeros(1,sample_num);
