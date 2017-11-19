@@ -52,7 +52,7 @@ end
 S=besselj(0,2*pi*fm(1,1).*n1.*T);
 
 figure,plot(fm(1).*(0:tau(1)), phi1./abs(phi1(1)),'r',fm(2).*(0:tau(2)), phi2./abs(phi2(1)),'k',fm(3).*(0:tau(3)), phi3./abs(phi3(1)),'b',fm(1).*(0:tau(1)), S,'m--');
-title('Autocorrelation');
+title('Autocorrelation of Sum of Sinusoids Method');
 xlabel('f_m\tau');
 ylabel('Autocorrelation');
 legend('fmT=0.01','fmT=0.1','fmT=1','Ideal');

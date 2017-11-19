@@ -28,8 +28,8 @@ g = sqrt(2)*(gI+i*gQ);
 envelope_dB = 10*log(abs(g)/mean2(abs(g)))
 x_axis = (0:sample_num)
 figure,plot(x_axis,envelope_dB(1,:),'k',x_axis,envelope_dB(2,:),'b',x_axis,envelope_dB(3,:),'r' )
-title('Sum of Sinusoids method for M=8');
+title('Sum of Sinusoids Method for M=8');
 xlabel('Time, t/T');
-ylabel('Envelope level (dB)');
+ylabel('Envelope Level (dB)');
 legend('fmT=0.01','fmT=0.1','fmT=0.5');
 grid on

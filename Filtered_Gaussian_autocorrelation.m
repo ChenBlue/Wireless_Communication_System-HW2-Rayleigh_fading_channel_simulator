@@ -51,7 +51,7 @@ for i=0:tau(3)
 end
 
 figure,plot(fm(1).*(0:tau(1)), phi1./abs(phi1(1)),'r',fm(2).*(0:tau(2)), phi2./abs(phi2(1)),'g',fm(3).*(0:tau(3)), phi3./abs(phi3(1)),'b');
-title('Autocorrelation');
+title('Autocorrelation of Filtered Gaussian Method');
 xlabel('f_m\tau');
 ylabel('Autocorrelation');
 legend('fmT=0.01','fmT=0.1','fmT=1');

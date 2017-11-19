@@ -29,7 +29,7 @@ envelope_dB = 10*log10(envelope);
 
 x_axis = (1:sample_num)./T;
 figure,plot(x_axis, envelope_dB(1,:),'g',x_axis, envelope_dB(2,:),'b',x_axis, envelope_dB(3,:),'r')
-title('Filtered Gaussian Noise method');
+title('Filtered Gaussian Noise Method');
 xlabel('Time, t/T');
 ylabel('Envelope Level (dB)');
 legend('fmT=0.01','fmT=0.1','fmT=0.5');
