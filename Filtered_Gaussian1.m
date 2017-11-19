@@ -1,8 +1,8 @@
 fmT = [0.01 0.1 0.5];
-[row num] = size(fmT);
+[row, num] = size(fmT);
 Omgp = 1;
 sample_num = 300;
-T = 1
+T = 1;
 
 sigma = 2-cos(pi.*fmT./2)-sqrt((2-cos(pi.*fmT./2)).^2-1);
 var = (1+sigma)./(1-sigma).*Omgp./2;
@@ -25,11 +25,12 @@ for i = 1:num
 end
 
 envelope = sqrt(gI.^2+gQ.^2);
-envelope_dB = 10*log10(envelope)
+envelope_dB = 10*log10(envelope);
 
-x_axis = [1:sample_num]./T
+x_axis = (1:sample_num)./T;
 figure,plot(x_axis, envelope_dB(1,:),'g',x_axis, envelope_dB(2,:),'b',x_axis, envelope_dB(3,:),'r')
 title('Filtered Gaussian Noise method');
 xlabel('Time, t/T');
 ylabel('Envelope Level (dB)');
 legend('fmT=0.01','fmT=0.1','fmT=0.5');
+
