@@ -27,7 +27,7 @@ for t = 0:sample_num
     gI(:,t+1) = 2*sum(cos(beta_m).*cos(2*pi*t.*fn),2)+sqrt(2)*cos(alpha).*cos(2*pi.*fm*t);
     gQ(:,t+1) = 2*sum(sin(beta_m).*cos(2*pi*t.*fn),2)+sqrt(2)*sin(alpha).*cos(2*pi.*fm*t);
 end
-g = sqrt(2)*(gI+i*gQ);
+g = sqrt(2)*(gI+1i*gQ);
 
 tau = 10./fm; % largest tau. Requirement: fm*tau=0~10
 % 3 autocorrelation with 3 different fm
@@ -37,25 +37,31 @@ phi3 = zeros(1, tau(3)+1);
 
 % fm*T = 0.01
 for i=0:tau(1)
-    gI_shift = zeros(1,sample_num+1);
-    gI_shift(1, i+1:end) = gI(1,1:end-i);
-    phi1(1,i+1) = mean(gI(1,:).*gI_shift);
+    g_shift = zeros(1,sample_num+1);
+    g_shift(1, i+1:end) = g(1,1:end-i);
+    phi1(1,i+1) = mean(conj(g(1,:)).*g_shift);
 end
 
 % fm*T = 0.1
 for i=0:tau(2)
-    gI_shift = zeros(1,sample_num+1);
-    gI_shift(1, i+1:end) = gI(2,1:end-i);
-    phi2(1,i+1) = mean(gI(2,:).*gI_shift);
+    g_shift = zeros(1,sample_num+1);
+    g_shift(1, i+1:end) = g(2,1:end-i);
+    phi2(1,i+1) = mean(conj(g(2,:)).*g_shift);
 end
 
 % fm*T = 0.5
 for i=0:tau(3)
-    gI_shift = zeros(1,sample_num+1);
-    gI_shift(1, i+1:end) = gI(3,1:end-i);
-    phi3(1,i+1) = mean(gI(3,:).*gI_shift);
+    g_shift = zeros(1,sample_num+1);
+    g_shift(1, i+1:end) = g(3,1:end-i);
+    phi3(1,i+1) = mean(conj(g(3,:)).*g_shift);
 end
 
+% Buit-in function: autocorr
+%{
+phi1 = autocorr(g(1,:) , 10/fmT(1));
+phi2 = autocorr(g(2,:) , 10/fmT(2));
+phi3 = autocorr(g(3,:) , 10/fmT(3));
+%}
 S=besselj(0,2*pi*fm(1).*(0:tau(1))*T); % Ideal autocorrelation
 
 % Plot channel autocorrelation
@@ -87,7 +93,7 @@ for t = 0:sample_num
     gI(:,t+1) = 2*sum(cos(beta_m).*cos(2*pi*t.*fn),2)+sqrt(2)*cos(alpha).*cos(2*pi.*fm*t);
     gQ(:,t+1) = 2*sum(sin(beta_m).*cos(2*pi*t.*fn),2)+sqrt(2)*sin(alpha).*cos(2*pi.*fm*t);
 end
-g = sqrt(2)*(gI+i*gQ);
+g = sqrt(2)*(gI+1i*gQ);
 
 tau = 10./fm; % largest tau. Requirement: fm*tau=0~10
 % 3 autocorrelation with 3 different fm
@@ -97,23 +103,23 @@ phi3 = zeros(1, tau(3)+1);
 
 % fm*T = 0.01
 for i=0:tau(1)
-    gI_shift = zeros(1,sample_num+1);
-    gI_shift(1, i+1:end) = gI(1,1:end-i);
-    phi1(1,i+1) = mean(gI(1,:).*gI_shift);
+    g_shift = zeros(1,sample_num+1);
+    g_shift(1, i+1:end) = g(1,1:end-i);
+    phi1(1,i+1) = mean(conj(g(1,:)).*g_shift);
 end
 
 % fm*T = 0.1
 for i=0:tau(2)
-    gI_shift = zeros(1,sample_num+1);
-    gI_shift(1, i+1:end) = gI(2,1:end-i);
-    phi2(1,i+1) = mean(gI(2,:).*gI_shift);
+    g_shift = zeros(1,sample_num+1);
+    g_shift(1, i+1:end) = g(2,1:end-i);
+    phi2(1,i+1) = mean(conj(g(2,:)).*g_shift);
 end
 
 % fm*T = 0.5
 for i=0:tau(3)
-    gI_shift = zeros(1,sample_num+1);
-    gI_shift(1, i+1:end) = gI(3,1:end-i);
-    phi3(1,i+1) = mean(gI(3,:).*gI_shift);
+    g_shift = zeros(1,sample_num+1);
+    g_shift(1, i+1:end) = g(3,1:end-i);
+    phi3(1,i+1) = mean(conj(g(3,:)).*g_shift);
 end
 
 S=besselj(0,2*pi*fm(1).*(0:tau(1))*T); % Ideal autocorrelation
