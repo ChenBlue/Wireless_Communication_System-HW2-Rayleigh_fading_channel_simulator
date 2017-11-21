@@ -2,7 +2,7 @@
 % Gaussian Noise method, and plot the channel output for fmT = 0.01, 0.1 
 % and 0.5. 
 fmT = [0.01 0.1 0.5]; % 3 different fm*T
-[row, num] = size(fmT);
+num = numel(fmT);
 Omgp = 1; % Set average power as 1
 sample_num = 300; % channel output data point
 T = 1; % simulation step size
@@ -37,9 +37,28 @@ envelope = sqrt(gI.^2+gQ.^2); % Power of output
 envelope_dB = 10*log10(envelope); 
 
 x_axis = (1:sample_num)./T; % time axis: t/T (0~300)
-% Plot the channel output with 3 different fm*T
+% Plot the channel output with 3 different fm*T together
 figure,plot(x_axis, envelope_dB(1,:),'g',x_axis, envelope_dB(2,:),'b',x_axis, envelope_dB(3,:),'r')
 title('Filtered Gaussian Noise Method');
 xlabel('Time, t/T');
 ylabel('Envelope Level (dB)');
 legend('fmT=0.01','fmT=0.1','fmT=0.5');
+
+% Plot the channel output with 3 different fm*T separately
+figure,plot(x_axis, envelope_dB(1,:))
+title('Filtered Gaussian Noise Method for fmT=0.01');
+xlabel('Time, t/T');
+ylabel('Envelope Level (dB)');
+ylim([-14 4]);
+
+figure,plot(x_axis, envelope_dB(2,:))
+title('Filtered Gaussian Noise Method for fmT=0.1');
+xlabel('Time, t/T');
+ylabel('Envelope Level (dB)');
+ylim([-14 4]);
+
+figure,plot(x_axis, envelope_dB(3,:),'r')
+title('Filtered Gaussian Noise Method for fmT=0.5');
+xlabel('Time, t/T');
+ylabel('Envelope Level (dB)');
+ylim([-14 4]);
