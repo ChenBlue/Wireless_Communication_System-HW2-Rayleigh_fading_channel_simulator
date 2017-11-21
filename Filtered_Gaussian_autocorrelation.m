@@ -26,6 +26,7 @@ for j = 1:sample_num-1
     gI(:,j+1) = sigma.*gI(:,j)+(1-sigma).*w1(:,j);
     gQ(:,j+1) = sigma.*gQ(:,j)+(1-sigma).*w2(:,j);
 end
+g = sqrt(2)*(gI+1i*gQ);
 
 fm = fmT./ T;
 tau = 10./fm; % largest tau, Requirement: fm*tau=0~10
@@ -37,23 +38,23 @@ phi3 = zeros(1, tau(3)+1);
 
 % fm*T = 0.01
 for i=0:tau(1)
-    gI_shift = zeros(1,sample_num); 
-    gI_shift(1, i+1:end) = gI(1,1:end-i); % gI shift right i index and put it in gI_shift
-    phi1(1,i+1) = mean(gI(1,:).*gI_shift); % Multiply each other and average them
+    g_shift = zeros(1,sample_num); 
+    g_shift(1, i+1:end) = g(1,1:end-i); % gI shift right i index and put it in gI_shift
+    phi1(1,i+1) = mean(conj(g(1,:)).*g_shift); % Multiply each other and average them
 end
 
 % fm*T = 0.1
 for i=0:tau(2)
-    gI_shift = zeros(1,sample_num);
-    gI_shift(1, i+1:end) = gI(2,1:end-i);
-    phi2(1,i+1) = mean(gI(2,:).*gI_shift);
+    g_shift = zeros(1,sample_num);
+    g_shift(1, i+1:end) = gI(2,1:end-i);
+    phi2(1,i+1) = mean(conj(g(2,:)).*g_shift);
 end
 
 % fm*T = 0.5
 for i=0:tau(3)
-    gI_shift = zeros(1,sample_num);
-    gI_shift(1, i+1:end) = gI(3,1:end-i);
-    phi3(1,i+1) = mean(gI(3,:).*gI_shift);
+    g_shift = zeros(1,sample_num);
+    g_shift(1, i+1:end) = gI(3,1:end-i);
+    phi3(1,i+1) = mean(conj(g(3,:)).*g_shift);
 end
 
 % Plot the channel autocorrelation with 3 different fm*T
