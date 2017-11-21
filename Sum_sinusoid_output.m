@@ -39,6 +39,24 @@ ylabel('Envelope Level (dB)');
 legend('fmT=0.01','fmT=0.1','fmT=0.5');
 grid on
 
+figure,plot(x_axis,envelope_dB(1,:),'k')
+title('Sum of Sinusoids Method for M=8 (fmT=0.01)');
+xlabel('Time, t/T');
+ylabel('Envelope Level (dB)');
+grid on
+
+figure,plot(x_axis,envelope_dB(2,:),'b')
+title('Sum of Sinusoids Method for M=8 (fmT=0.1)');
+xlabel('Time, t/T');
+ylabel('Envelope Level (dB)');
+grid on
+
+figure,plot(x_axis,envelope_dB(3,:),'r' )
+title('Sum of Sinusoids Method for M=8 (fmT=0.5)');
+xlabel('Time, t/T');
+ylabel('Envelope Level (dB)');
+grid on
+
 % For M = 16; basically the code below is the same as above
 M = 16; 
 m = (1:M);
@@ -70,4 +88,22 @@ title('Sum of Sinusoids Method for M=16');
 xlabel('Time, t/T');
 ylabel('Envelope Level (dB)');
 legend('fmT=0.01','fmT=0.1','fmT=0.5');
+grid on
+
+figure,plot(x_axis,envelope_dB(1,:),'k')
+title('Sum of Sinusoids Method for M=16 (fmT=0.01)');
+xlabel('Time, t/T');
+ylabel('Envelope Level (dB)');
+grid on
+
+figure,plot(x_axis,envelope_dB(2,:),'b')
+title('Sum of Sinusoids Method for M=16 (fmT=0.1)');
+xlabel('Time, t/T');
+ylabel('Envelope Level (dB)');
+grid on
+
+figure,plot(x_axis,envelope_dB(3,:),'r' )
+title('Sum of Sinusoids Method for M=16 (fmT=0.5)');
+xlabel('Time, t/T');
+ylabel('Envelope Level (dB)');
 grid on
