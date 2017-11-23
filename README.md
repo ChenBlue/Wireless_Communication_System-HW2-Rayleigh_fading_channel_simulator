@@ -31,5 +31,5 @@ $$ \theta _n =\frac{2\pi n}{N}, n=1,2,...,N $$
 Based on the figure above, we can see that some frequencies are the same. Therefore, we can rewrite the equation as following.
 $$ g(t)=g_I (t)+jg_Q (t)=\sqrt{2}([2\sum ^M _{n=1}(cos\beta _n cos2\pi f_n t)+\sqrt{2}cos\alpha cos2\pi f_m t]+j[2\sum ^M _{n=1} (sin\beta _n cos2\pi f_n t)+\sqrt{2} sin\alpha cos2\pi f_m t]) $$
 
-where $ \alpha =\hat{\phi }_N =-\hat{\phi }_-N $
-$$ \alpha =\hat{\phi }_N =-\hat{\phi }_{-N} $$
+where $ \alpha =\hat{\phi }_N =-\hat{\phi }\_{-N}$
+$$ \alpha =\hat{\phi }_N =-\hat{\phi }\_-N $$
