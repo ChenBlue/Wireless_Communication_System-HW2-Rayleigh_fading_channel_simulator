@@ -7,7 +7,8 @@ This is the homework from COM5170 Wireless Communication in National Tsing Hua U
    * Plot the channel output for M = 8 and 16 (fmT = 0.01, 0.1, 0.5 and t/T = 0 ~ 300)
    * Plot the channel output autocorrelation for M = 8 and 16 (fm $\tau$ = 0 ~10)
 
-## Filtered Gaussian Noise Method
+## Algorithm
+### Filtered Gaussian Noise Method
 The following picture is the block diagram of Filtered Gaussain Noise Method.
 ![FGN_Block_diagram](https://github.com/ChenBlue/Wireless_Communication_System-HW2-Rayleigh_fading_channel_simulator/blob/master/FIG/filtered_gaussian_block_diagram.JPG) </br>
 Two Gaussian noise source are independent with zero mean and variance $\sigma ^2$. Low-pass filter is first-order low-pass filter. The equation is shown as following:
@@ -20,15 +21,30 @@ $$ \sigma ^2=\frac{1+\xi }{1-\xi }\frac{\Omega _p}{2} $$
 where $\Omega _p/2$ is the power spectral densities of noise sources. </br>
 After generating g(t), I derive Envelope of the g(t) in dB-scale by $10\times log(\sqrt{g_I (t)^2 +g_Q (t)^2})$.
 
-# Sum of Sinusoids method
+### Sum of Sinusoids method
 Assume channel is stationary and equal strength of multipath components-
 $$ g(t)=\sum ^N _{n=1} e ^{j(2\pi f_m tcos\theta _n + \hat{\phi}_n)} $$
 For an isotropic scattering environment, assume that the incident angles are uniformly distributed:
 $$ \theta _n =\frac{2\pi n}{N}, n=1,2,...,N $$
 
-![FGN_Block_diagram](https://github.com/ChenBlue/Wireless_Communication_System-HW2-Rayleigh_fading_channel_simulator/blob/master/FIG/freq_pair.JPG) </br>
+![frequency_pair](https://github.com/ChenBlue/Wireless_Communication_System-HW2-Rayleigh_fading_channel_simulator/blob/master/FIG/freq_pair.JPG) </br>
 
 Based on the figure above, we can see that some frequencies are the same. Therefore, we can rewrite the equation as following.
 $$ g(t)=g_I (t)+jg_Q (t)=\sqrt{2}([2\sum ^M _{n=1}(cos\beta _n cos2\pi f_n t)+\sqrt{2}cos\alpha cos2\pi f_m t]+j[2\sum ^M _{n=1} (sin\beta _n cos2\pi f_n t)+\sqrt{2} sin\alpha cos2\pi f_m t]) $$
 
 where $ \alpha =\hat{\phi }_N =-\hat{\phi }\_{-N}$, $\beta _n =\hat{\phi}_n =-\hat{\phi}\_{-N}$, $M=\frac{1}{2}(\frac{N}{2}-1) $
+
+## Result
+The following figures are the result of my program.
+### Filtered Gaussian Noise Method
+![Filtered_gaussian_output](https://github.com/ChenBlue/Wireless_Communication_System-HW2-Rayleigh_fading_channel_simulator/blob/master/FIG/Filtered_Gaussian_Noise_Method_Output.jpg)
+![Filtered_gaussian_autocorrelation](https://github.com/ChenBlue/Wireless_Communication_System-HW2-Rayleigh_fading_channel_simulator/blob/master/FIG/Filtered_Gaussian_Noise_Method_Autocorrelation.jpg)
+
+### Sum of Sinusoids method
+#### M=8
+![Sum_sin_output8](https://github.com/ChenBlue/Wireless_Communication_System-HW2-Rayleigh_fading_channel_simulator/blob/master/FIG/Sum_of_Sinusoids_Output8.jpg)
+![Sum_sin_autocorrelation8](https://github.com/ChenBlue/Wireless_Communication_System-HW2-Rayleigh_fading_channel_simulator/blob/master/FIG/Sum_of_Sinusoids_Autocorrelation8.jpg)
+
+#### M=16
+![Sum_sin_output16](https://github.com/ChenBlue/Wireless_Communication_System-HW2-Rayleigh_fading_channel_simulator/blob/master/FIG/Sum_of_Sinusoids_Output_16.jpg)
+![Sum_sin_autocorrelation16](https://github.com/ChenBlue/Wireless_Communication_System-HW2-Rayleigh_fading_channel_simulator/blob/master/FIG/Sum_of_Sinusoids_Autocorrelation16.jpg)
