@@ -29,5 +29,14 @@ $$ \theta _n =\frac{2\pi n}{N}, n=1,2,...,N $$
 ![FGN_Block_diagram](https://github.com/ChenBlue/Wireless_Communication_System-HW2-Rayleigh_fading_channel_simulator/blob/master/FIG/freq_pair.JPG) </br>
 
 Based on the figure above, we can see that some frequencies are the same. Therefore, we can rewrite the equation as following.
-$$ g(t)&=g_I (t)+jg_Q (t)&=\sqrt{2}\{[2\sum ^M _{n=1}(cos\beta _n cos2\pi f_n t)+\sqrt{2}cos\alpha cos2\pi f_m t]+j[2\sum ^M _{n=1} (sin\beta _n cos2\pi f_n t)+\sqrt{2} sin\alpha cos2\pi f_m t]\} $$
-where $\alpha = \hat{\phi}_N =-\hat{\phi}_{-N}$, $\beta _n =\hat{\phi}_n =-\hat{\phi}_{-N}$, $M=\frac{1}{2}(\frac{N}{2}-1) $
+$$ g(t)=g_I (t)+jg_Q (t)$$
+$$=\sqrt{2}\{[2\sum ^M _{n=1}(cos\beta _n cos2\pi f_n t)+\sqrt{2}cos\alpha cos2\pi f_m t]+j[2\sum ^M _{n=1} (sin\beta _n cos2\pi f_n t)+\sqrt{2} sin\alpha cos2\pi f_m t]\} $$
+
+$$
+\begin{aligned}
+ AR(p): Y_i &= c + \epsilon_i + \phi_i Y_{i-1} \dots </br>
+ Y_{i} &= c + \phi_i Y_{i-1} \dots
+\end{aligned}
+$$
+
+where $\alpha =\hat{\phi}_N =-\hat{\phi}_{-N}$
